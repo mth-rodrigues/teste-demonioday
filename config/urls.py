@@ -26,4 +26,6 @@ urlpatterns = [
     path('', views.login),
     path('home/<int:id>/<str:nome>/', views.home),
     path('home/<int:id>/<str:nome>/desafiar/', views.desafiar)
-] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+] 
+urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

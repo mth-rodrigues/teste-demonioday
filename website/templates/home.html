@@ -1,9 +1,12 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="{% static '/website/static/js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Document</title>
 </head>
 <body>
@@ -35,7 +38,23 @@
                 <p>{{ desafio.valor }}</p>
                 <p style="font-size:7pt;">{{ desafio.criacao }}</p>
             </div>
-        {% endfor %}
+            {% endfor %}
+            <form method="post" enctype="multipart/form-data">
+                 {% csrf_token %}
+                <div>
+                    <label for="file">Choose file to upload</label>
+                    <input type="file" id="file" name="file" multiple
+                    id="avatar" name="avatar"
+                    accept="image/png, image/jpeg">        
+                </div>
+                    <div>
+                      <button>Submit</button>
+                    </div>
+             </form>
+             <br><br>
+<img src='{{ MEDIA_URL }}{{ imagefile }}'>
+<br><br>
+</p>
     </div>
 </body>
 </html>
